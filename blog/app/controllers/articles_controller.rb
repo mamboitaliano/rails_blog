@@ -43,6 +43,13 @@ class ArticlesController < ApplicationController
   # You don't need to pass all attributes to update. For example, if you'd call @article.update(title: 'A new title')
   # Rails would only update the title attribute, leaving all other attributes untouched.
 
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :text)
